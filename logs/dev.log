@@ -1,2 +1,6 @@
 2025-04-17T16:40:41.859+0700	DEBUG	server/main.go:8	All initializations are done
 2025-04-17T16:40:52.750+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T18:44:35.160+0700	ERROR	initialize/run.go:11	Postgres connection failed	{"error": "cannot parse `host=localhost user=postgres password=xxxxx dbname=kumoclass port=%!s(int=5432) sslmode=disable TimeZone=Local`: invalid port (strconv.ParseUint: parsing \"%!s(int=5432)\": invalid syntax)"}
+2025-04-17T18:45:25.401+0700	ERROR	initialize/run.go:11	Postgres connection failed	{"error": "failed to connect to `user=postgres database=kumoclass`: 127.0.0.1:5432 (localhost): server error: FATAL: invalid value for parameter \"TimeZone\": \"Local\" (SQLSTATE 22023)"}
+2025-04-17T18:48:47.369+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T18:48:47.381+0700	DEBUG	server/main.go:8	All initializations are done

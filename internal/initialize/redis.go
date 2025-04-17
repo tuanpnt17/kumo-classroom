@@ -1,7 +1,7 @@
 package initialize
 
 func InitRedis() {
-	// Initialize Redis connection
+	// Todo: Initialize Redis connection
 	// Example: redisClient := redis.NewClient(&redis.Options{
 	// 	Addr:     "localhost:6379",
 	// 	Password: "", // no password set

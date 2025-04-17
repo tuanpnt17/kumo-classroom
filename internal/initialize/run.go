@@ -9,7 +9,7 @@ func Run() {
 	LoadConfig()
 	InitLogger()
 	InitPostgres()
-	InitRedis()
+	// InitRedis()
 
 	global.Logger.Debug("All initializations are done")
 	r := InitRouter()

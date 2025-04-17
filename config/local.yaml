@@ -7,12 +7,18 @@ postgres:
   host: localhost
   port: 5432
   dbName: kumoclass
+  maxIdleConns: 10
+  maxOpenConns: 100
+  connMaxLifetime: 3600
 mysql:
   user: root
   password: TuanPNT@15743
   host: localhost
   port: 3306
   dbName: demo
+  maxIdleConns: 10
+  maxOpenConns: 100
+  connMaxLifetime: 3600
 zap:
   level: debug
   logPath: "./logs/dev.log"
