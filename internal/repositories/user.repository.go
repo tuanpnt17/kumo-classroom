@@ -1,12 +1,15 @@
 package repositories
 
-type UserRepository struct{}
-
-func NewUserRepository() *UserRepository {
-	return &UserRepository{}
+type IUserRepository interface {
+	GetAll() []string
 }
 
-func (ur *UserRepository) GetAll() []string {
-	users := []string{"Tuan", "Anh", "Quynh"}
-	return users
+type userRepository struct{}
+
+func (ur *userRepository) GetAll() []string {
+	return []string{"user1", "user2", "user3"}
+}
+
+func NewUserRepository() IUserRepository {
+	return &userRepository{}
 }

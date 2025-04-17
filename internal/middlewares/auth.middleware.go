@@ -5,7 +5,7 @@ import (
 	"github.com/tuanpnt17/kumo-classroom-be/pkg/response"
 )
 
-func AuthMiddleware() gin.HandlerFunc {
+func Authentication() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.Request.Header.Get("Authorization")
 		if token == "" {

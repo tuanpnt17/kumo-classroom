@@ -4,3 +4,13 @@
 2025-04-17T18:45:25.401+0700	ERROR	initialize/run.go:11	Postgres connection failed	{"error": "failed to connect to `user=postgres database=kumoclass`: 127.0.0.1:5432 (localhost): server error: FATAL: invalid value for parameter \"TimeZone\": \"Local\" (SQLSTATE 22023)"}
 2025-04-17T18:48:47.369+0700	DEBUG	initialize/run.go:11	Postgres connection successful
 2025-04-17T18:48:47.381+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T20:21:53.078+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T20:21:53.106+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T20:48:37.535+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T20:48:37.563+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T20:49:23.387+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T20:49:23.414+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T23:00:39.433+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T23:00:39.461+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-17T23:02:10.377+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-17T23:02:10.403+0700	DEBUG	server/main.go:8	All initializations are done

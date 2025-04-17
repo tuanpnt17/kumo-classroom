@@ -2,16 +2,19 @@ package services
 
 import "github.com/tuanpnt17/kumo-classroom-be/internal/repositories"
 
-type UserService struct {
-	userRepository *repositories.UserRepository
+type IUserService interface {
+	GetAllUsers() []string
+}
+type userService struct {
+	userRepository *repositories.IUserRepository
 }
 
-func NewUserService() *UserService {
-	return &UserService{
-		userRepository: repositories.NewUserRepository(),
+func (us *userService) GetAllUsers() []string {
+	return (*us.userRepository).GetAll()
+}
+
+func NewUserService(ur repositories.IUserRepository) IUserService {
+	return &userService{
+		userRepository: &ur,
 	}
-}
-
-func (us *UserService) GetAllUsers() []string {
-	return us.userRepository.GetAll()
 }

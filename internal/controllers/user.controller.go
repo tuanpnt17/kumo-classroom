@@ -7,22 +7,17 @@ import (
 )
 
 type UserController struct {
-	userService *services.UserService
+	userService *services.IUserService
 }
 
-func NewUserController() *UserController {
+func NewUserController(us services.IUserService) *UserController {
 	return &UserController{
-		userService: services.NewUserService(),
+		userService: &us,
 	}
 }
 
 func (uc *UserController) GetAll(c *gin.Context) {
-	name := c.Query("name")
-	if name == "" {
-		response.ErrorResponse(c, response.ParamInvalid)
-		return
-	}
-	response.SuccessResponse(c, response.Success, uc.userService.GetAllUsers())
+	response.SuccessResponse(c, response.Success, (*uc.userService).GetAllUsers())
 }
 
 func (uc *UserController) GetUserById(context *gin.Context) {

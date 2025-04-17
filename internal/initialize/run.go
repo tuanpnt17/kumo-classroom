@@ -10,11 +10,12 @@ func Run() {
 	InitLogger()
 	InitPostgres()
 	// InitRedis()
-
-	global.Logger.Debug("All initializations are done")
 	r := InitRouter()
 
+	global.Logger.Debug("All initializations are done")
 	if err := r.Run(":" + strconv.Itoa(global.Config.Server.Port)); err != nil {
+		global.Logger.Error("Failed to start server: " + err.Error())
 		panic(err)
 	}
+	global.Logger.Debug("Server started on port " + strconv.Itoa(global.Config.Server.Port))
 }

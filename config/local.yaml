@@ -1,6 +1,6 @@
 server:
   port: 8082
-  environment: dev
+  mode: dev
 postgres:
   user: postgres
   password: TuanPNT@15743
