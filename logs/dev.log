@@ -14,3 +14,6 @@
 2025-04-17T23:00:39.461+0700	DEBUG	server/main.go:8	All initializations are done
 2025-04-17T23:02:10.377+0700	DEBUG	initialize/run.go:11	Postgres connection successful
 2025-04-17T23:02:10.403+0700	DEBUG	server/main.go:8	All initializations are done
+2025-04-18T11:47:20.710+0700	ERROR	initialize/run.go:11	Postgres connection failed	{"error": "failed to connect to `user=postgres database=kumoclass`: 127.0.0.1:5432 (localhost): dial error: dial tcp 127.0.0.1:5432: connect: connection refused"}
+2025-04-18T11:48:08.606+0700	DEBUG	initialize/run.go:11	Postgres connection successful
+2025-04-18T11:48:15.715+0700	DEBUG	server/main.go:8	All initializations are done
