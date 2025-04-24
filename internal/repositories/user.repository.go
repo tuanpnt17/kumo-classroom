@@ -1,15 +1,27 @@
 package repositories
 
-type IUserRepository interface {
-	GetAll() []string
+import (
+	"context"
+	"github.com/tuanpnt17/kumo-classroom-be/global"
+	"github.com/tuanpnt17/kumo-classroom-be/internal/domain/entities"
+	"github.com/tuanpnt17/kumo-classroom-be/internal/domain/interfaces"
+	"time"
+)
+
+type userRepository struct {
+	unitOfWork interfaces.IUnitOfWork
 }
 
-type userRepository struct{}
+func (ur userRepository) CheckExistByEmail(ctx context.Context, email string) (bool, error) {
+	ctx, cancel := context.WithTimeout(ctx, time.Duration(global.Config.Postgres.TimeoutSeconds)*time.Second)
+	defer cancel()
 
-func (ur *userRepository) GetAll() []string {
-	return []string{"user1", "user2", "user3"}
+	count, err := ur.unitOfWork.CountRows(ctx, &entities.User{Email: email})
+	return count > 0, err
 }
 
-func NewUserRepository() IUserRepository {
-	return &userRepository{}
+func NewUserRepository(unitOfWork interfaces.IUnitOfWork) entities.IUserRepository {
+	return &userRepository{
+		unitOfWork: unitOfWork,
+	}
 }

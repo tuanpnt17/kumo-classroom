@@ -4,19 +4,20 @@ import (
 	"github.com/google/wire"
 	"github.com/tuanpnt17/kumo-classroom-be/internal/controllers"
 	"github.com/tuanpnt17/kumo-classroom-be/internal/repositories"
-	"github.com/tuanpnt17/kumo-classroom-be/internal/services"
+	"github.com/tuanpnt17/kumo-classroom-be/internal/usecases"
 )
 
 var RepoSet = wire.NewSet(
+	repositories.NewUnitOfWork,
 	repositories.NewUserRepository,
 )
 
-var ServiceSet = wire.NewSet(
+var UsecaseSet = wire.NewSet(
 	RepoSet,
-	services.NewUserService,
+	usecases.NewLoginUsecase,
 )
 
 var ControllerSet = wire.NewSet(
-	ServiceSet,
-	controllers.NewUserController,
+	UsecaseSet,
+	controllers.NewAuthController,
 )

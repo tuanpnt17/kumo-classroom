@@ -1,9 +1,10 @@
 package initialize
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/tuanpnt17/kumo-classroom-be/global"
-	"github.com/tuanpnt17/kumo-classroom-be/internal/models"
+	"github.com/tuanpnt17/kumo-classroom-be/internal/domain/entities"
 	"go.uber.org/zap"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -38,10 +39,14 @@ func setPool() {
 
 func migrateTables() {
 	err := global.AppDB.AutoMigrate(
-		&models.User{},
+		&entities.User{},
 	)
 	if err != nil {
 		global.Logger.Error("Failed to migrate tables", zap.String("error", err.Error()))
 		return
 	}
+}
+
+func BeginTransaction(opts ...*sql.TxOptions) *gorm.DB {
+	return global.AppDB.Begin(opts...)
 }

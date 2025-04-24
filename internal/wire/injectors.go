@@ -8,7 +8,7 @@ import (
 	"github.com/tuanpnt17/kumo-classroom-be/internal/controllers"
 )
 
-func InitUserController() *controllers.UserController {
+func InitAuthController() *controllers.AuthController {
 	wire.Build(ControllerSet)
-	return new(controllers.UserController)
+	return new(controllers.AuthController)
 }

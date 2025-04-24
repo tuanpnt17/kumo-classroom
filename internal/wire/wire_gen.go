@@ -9,14 +9,15 @@ package wire
 import (
 	"github.com/tuanpnt17/kumo-classroom-be/internal/controllers"
 	"github.com/tuanpnt17/kumo-classroom-be/internal/repositories"
-	"github.com/tuanpnt17/kumo-classroom-be/internal/services"
+	"github.com/tuanpnt17/kumo-classroom-be/internal/usecases"
 )
 
 // Injectors from injectors.go:
 
-func InitUserController() *controllers.UserController {
-	iUserRepository := repositories.NewUserRepository()
-	iUserService := services.NewUserService(iUserRepository)
-	userController := controllers.NewUserController(iUserService)
-	return userController
+func InitAuthController() *controllers.AuthController {
+	iUnitOfWork := repositories.NewUnitOfWork()
+	iUserRepository := repositories.NewUserRepository(iUnitOfWork)
+	iLoginUsecase := usecases.NewLoginUsecase(iUserRepository)
+	authController := controllers.NewAuthController(iLoginUsecase)
+	return authController
 }

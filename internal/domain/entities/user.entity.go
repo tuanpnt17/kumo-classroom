@@ -1,6 +1,9 @@
-package models
+package entities
 
-import "gorm.io/gorm"
+import (
+	"context"
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
@@ -11,4 +14,8 @@ type User struct {
 
 func (u *User) TableName() string {
 	return "users"
+}
+
+type IUserRepository interface {
+	CheckExistByEmail(ctx context.Context, email string) (bool, error)
 }
